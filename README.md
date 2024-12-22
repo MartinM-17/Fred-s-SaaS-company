@@ -108,6 +108,21 @@ Facilitates message delivery between components.
 
 ---
 
+### **Logical Diagram**
+
+- **Suggested Flow:**
+1. The user accesses the application via ALB.
+2. Cognito authenticates the user and generates a JWT token.
+3. API Gateway handles authenticated API requests.
+4. Lambda functions process business logic, interacting with DynamoDB or Aurora.
+5. SNS distributes critical events to SQS queues, Lambda, or EventBridge for additional processing.
+
+### **Additional Considerations**  
+- **High Availability:** Use Multi-AZ and Multi-Region for critical services if it’s a global SaaS solution.  
+- **Monitoring:** Set up key metrics in CloudWatch and enable AWS X-Ray for traceability.  
+- **Security:** Apply the principle of least privilege in IAM, use WAF with custom rules, and perform regular audits with AWS Security Hub.
+---
+
 ## **Getting Started**
 
 ### **Prerequisites**
